@@ -11,6 +11,7 @@ git commit -m "your comments"
 
 git push origin master
 
+git pull
 
 git checkout master
 (Switched to branch 'master'
@@ -28,3 +29,9 @@ Switched to a new branch 'masternew1'
 git push origin :master
 (To gitlab@qagit.grid.datasynapse.com:shli/fabric-testharness-ruby.git
  [deleted]         master)
+ 
+git remote add ruby https://github.com/monica-li/testMonica.git
+
+git remote
+
+git fetch ruby
