@@ -3,6 +3,8 @@ git config --global user.email youemail@qq.com
 
 git config --global user.name "yourusername”
 
+git config --global user.password "yourpassword"
+
 git clone https://github.com/monica-li/testMonica.git
 
 git add .
