@@ -21,7 +21,7 @@
 					
 					<div class="form-group" data-ng-class="{'has-error' : form.address.$error.required && submitted}">
 						<label for="name">地址 *</label> 
-						<input type="text" name="address" class="form-control" id="name" data-ng-model="project.address" placeholder="address" required>
+						<input type="text" name="address" class="form-control" id="address" data-ng-model="project.address" placeholder="address" required>
 						<p class="help-block" data-ng-show="form.address.$error.required && submitted">Required</p>
 					</div>
 										
@@ -40,21 +40,21 @@
 					</div>
 					<div class="form-group">
 						<label for="city">City</label> 
-						<select class="form-control" name="city" data-ng-model="project.city" data-ng-options="cp for cp in getCities()">
+						<select id="city" class="form-control" name="city" data-ng-model="project.city" data-ng-options="cp for cp in getCities()">
 							<option value="">-City-</option>
 						</select>
 					</div>
 					<div class="form-group">
 						<label for="district">District</label> 	
-						<select class="form-control" name="district" data-ng-model="project.district" data-ng-options="dp for dp in getDistricts()">
+						<select id="district" class="form-control" name="district" data-ng-model="project.district" data-ng-options="dp for dp in getDistricts()">
 							<option value="">-District-</option>
 						</select>
 					</div>
 				</form>
 			</div>
 			<div class="modal-footer">
-				<button type="submit" class="btn btn-primary" data-ng-click="doSave()">Save</button>
-				<button type="button" class="btn btn-info" data-ng-click="$hide()">Cancel</button>
+				<button id="dobt" type="submit" class="btn btn-primary" data-ng-click="doSave()">Save</button>
+				<button id="cancelbt" type="button" class="btn btn-info" data-ng-click="$hide()">Cancel</button>
 			</div>
 		</div>
 	</div>

@@ -2,20 +2,20 @@
 	<div class="row vk-search-bar">
 		<form class="form-inline" data-role="form" name="form" data-ng-submit="doSearch()">
 			<div class="form-group">
-				<input type="text" class="form-control" placeholder="项目名称" data-ng-model="condition.search">
+				<input id="projectname" type="text" class="form-control" placeholder="项目名称" data-ng-model="condition.search">
 			</div>
 			<div class="form-group">
-				<input class="form-control" style="width:150px;" placeholder="从" data-ng-model="condition.dateTimeFrom" data-bs-datepicker date-format="yyyy-MM-dd" type="text">
-				<input class="form-control" style="width:150px;" placeholder="到" data-ng-model="condition.dateTimeTo" data-bs-datepicker date-format="yyyy-MM-dd" type="text">
+				<input id="dateTimeFrom" class="form-control" style="width:150px;" placeholder="从" data-ng-model="condition.dateTimeFrom" data-bs-datepicker date-format="yyyy-MM-dd" type="text">
+				<input id="dateTimeTo" class="form-control" style="width:150px;" placeholder="到" data-ng-model="condition.dateTimeTo" data-bs-datepicker date-format="yyyy-MM-dd" type="text">
 			</div>
 			<div class="form-group">
-				<select data-ng-model="condition.status" data-ng-options="userStatusOption.value as userStatusOption.label for userStatusOption in userStatusOptions" class="form-control">
+				<select id="status" data-ng-model="condition.status" data-ng-options="userStatusOption.value as userStatusOption.label for userStatusOption in userStatusOptions" class="form-control">
 					<option value="">-Status-</option>
 				</select>
 			</div>
-			<button type="submit" class="btn btn-primary">Search</button>
-			<button class="btn btn-primary" data-ng-click="doReset()">Reset</button>
-			<button type="button" class="btn btn-primary" data-ng-click="doOpenEditModal()">新建</button>
+			<button id="searchbt" type="submit" class="btn btn-primary">Search</button>
+			<button id="resetbt" class="btn btn-primary" data-ng-click="doReset()">Reset</button>
+			<button id="newbt" type="button" class="btn btn-primary" data-ng-click="doOpenEditModal()">新建</button>
 		</form>
 	</div>
 	<div class="vk-grid" data-ng-grid="gridOptions"></div>

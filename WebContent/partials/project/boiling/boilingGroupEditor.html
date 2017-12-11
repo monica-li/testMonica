@@ -22,7 +22,7 @@
 					<div class="form-inline">
 						<div class="form-group">
 						<label for="name">请选择锅炉</label> 
-							<select data-ng-model="boilingGroup.boilings_id" multiple data-ng-options="boilingOption.value as boilingOption.label for boilingOption in boilingOptions" class="form-control">
+							<select id="boilingOption" data-ng-model="boilingGroup.boilings_id" multiple data-ng-options="boilingOption.value as boilingOption.label for boilingOption in boilingOptions" class="form-control">
 								<option value="">-选择锅炉-</option>
 							</select>
 						</div>
@@ -35,8 +35,8 @@
 				</form>
 			</div>
 			<div class="modal-footer">
-				<button type="submit" class="btn btn-primary" data-ng-click="doSave()">Save</button>
-				<button type="button" class="btn btn-info" data-ng-click="$hide()">Cancel</button>
+				<button id="dobt" type="submit" class="btn btn-primary" data-ng-click="doSave()">Save</button>
+				<button id="cancelbt" type="button" class="btn btn-info" data-ng-click="$hide()">Cancel</button>
 			</div>
 		</div>
 	</div>

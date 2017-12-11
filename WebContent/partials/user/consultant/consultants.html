@@ -5,22 +5,22 @@
 				<input type="text" class="form-control" placeholder="Username/Name" data-ng-model="condition.search">
 			</div>
 			<div class="form-group">
-				<input class="form-control" style="width:160px;" placeholder="Register Time From" data-ng-model="condition.registerDateTimeFrom" data-bs-datepicker data-date-format="yyyy-MM-dd hh:mm:ss" type="text">
-				<input class="form-control" style="width:160px;" placeholder="To" data-ng-model="condition.registerDateTimeTo" data-bs-datepicker data-date-format="yyyy-MM-dd hh:mm:ss" type="text">
+				<input id="regfromtime" class="form-control" style="width:160px;" placeholder="Register Time From" data-ng-model="condition.registerDateTimeFrom" data-bs-datepicker data-date-format="yyyy-MM-dd hh:mm:ss" type="text">
+				<input id="regtotime" class="form-control" style="width:160px;" placeholder="To" data-ng-model="condition.registerDateTimeTo" data-bs-datepicker data-date-format="yyyy-MM-dd hh:mm:ss" type="text">
 			</div>
 			<div class="form-group">
-				<select data-ng-model="condition.status" data-ng-options="userStatusOption.value as userStatusOption.label for userStatusOption in userStatusOptions" class="form-control">
+				<select id="status" data-ng-model="condition.status" data-ng-options="userStatusOption.value as userStatusOption.label for userStatusOption in userStatusOptions" class="form-control">
 					<option value="">-Status-</option>
 				</select>
 			</div>
-			<button type="submit" class="btn btn-primary">Search</button>
-			<button class="btn btn-primary" data-ng-click="doReset()">Reset</button>
+			<button id="searchbt" type="submit" class="btn btn-primary">Search</button>
+			<button id="resetbt" class="btn btn-primary" data-ng-click="doReset()">Reset</button>
 		</form>
 	</div>
 	
 	<div class="vk-grid" data-ng-grid="gridOptions"></div>
 	
 	<div class="vk-actions">
-    	<button type="button" class="btn btn-primary" data-ng-click="doOpenEditModal()">New</button>
+    	<button id="newbt" type="button" class="btn btn-primary" data-ng-click="doOpenEditModal()">New</button>
     </div>
 </div>

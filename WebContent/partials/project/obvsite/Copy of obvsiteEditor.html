@@ -21,7 +21,7 @@
 					
 					<div class="form-group">
 						<label for="district">District</label> 	
-						<select class="form-control" name="district" data-ng-model="obvsite.district" data-ng-options="d for d in getDistricts()">
+						<select id="district" class="form-control" name="district" data-ng-model="obvsite.district" data-ng-options="d for d in getDistricts()">
 							<option value="">-区-</option>
 						</select>
 					</div>
@@ -64,8 +64,8 @@
 				</form>
 			</div>
 			<div class="modal-footer">
-				<button type="submit" class="btn btn-primary" data-ng-click="doSave()">Save</button>
-				<button type="button" class="btn btn-info" data-ng-click="$hide()">Cancel</button>
+				<button id="dobt" type="submit" class="btn btn-primary" data-ng-click="doSave()">Save</button>
+				<button id="cancelbt" type="button" class="btn btn-info" data-ng-click="$hide()">Cancel</button>
 			</div>
 		</div>
 	</div>

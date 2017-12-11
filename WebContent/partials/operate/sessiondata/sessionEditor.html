@@ -15,22 +15,22 @@
 					
 					<div class="form-group" data-ng-class="{'has-error' : form.from.$error.required && submitted}">
 						<label for="name">开始时间 *</label> 
-						<input name="from" class="form-control" style="width:150px;" placeholder="To" data-ng-model="session.session_start_time" data-bs-datepicker date-format="yyyy-MM-dd" type="text" required>
+						<input id="from" name="from" class="form-control" style="width:150px;" placeholder="To" data-ng-model="session.session_start_time" data-bs-datepicker date-format="yyyy-MM-dd" type="text" required>
 						
 						<p class="help-block" data-ng-show="form.from.$error.required && submitted">Required</p>
 					</div>
 					
 					<div class="form-group" data-ng-class="{'has-error' : form.to.$error.required && submitted}">
 						<label for="name">结束时间 *</label> 
-						<input name="to" class="form-control" style="width:150px;" placeholder="To" data-ng-model="session.session_end_time" data-bs-datepicker date-format="yyyy-MM-dd" type="text" required>
+						<input id="to" name="to" class="form-control" style="width:150px;" placeholder="To" data-ng-model="session.session_end_time" data-bs-datepicker date-format="yyyy-MM-dd" type="text" required>
 						<p class="help-block" data-ng-show="form.to.$error.required && submitted">Required</p>
 					</div>	
 					
 				</form>
 			</div>
 			<div class="modal-footer">
-				<button type="submit" class="btn btn-primary" data-ng-click="doSave()">Save</button>
-				<button type="button" class="btn btn-info" data-ng-click="$hide()">Cancel</button>
+				<button id="dobt" type="submit" class="btn btn-primary" data-ng-click="doSave()">Save</button>
+				<button id="cancelbt" type="button" class="btn btn-info" data-ng-click="$hide()">Cancel</button>
 			</div>
 		</div>
 	</div>

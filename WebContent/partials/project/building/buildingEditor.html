@@ -14,7 +14,7 @@
 					</div>
 					<div class="form-group">
 						<label for="district">District</label> 	
-						<select class="form-control" name="district" data-ng-model="building.district" data-ng-options="dis1 for dis1 in getDistricts()">
+						<select id="district" class="form-control" name="district" data-ng-model="building.district" data-ng-options="dis1 for dis1 in getDistricts()">
 							<option value="">-区-</option>
 						</select>
 					</div>
@@ -39,19 +39,19 @@
 					</div>
 					
 					<div class="form-group" data-ng-class="{'has-error' : form.keep.$error.required && submitted}">
-						<select class="form-control" name="keep" id="role" data-ng-model="building.keepCondition" data-ng-options="keepConditionTypeOption.value as keepConditionTypeOption.label for keepConditionTypeOption in keepConditionTypeOptions" required>
+						<select class="form-control" name="keep" id="keepCondition" data-ng-model="building.keepCondition" data-ng-options="keepConditionTypeOption.value as keepConditionTypeOption.label for keepConditionTypeOption in keepConditionTypeOptions" required>
 					    	<option value="">-保温情况-</option>
 						</select>	
 						<p class="help-block" data-ng-show="form.keep.$error.required && submitted">Required</p>
 					</div>
 					<div class="form-group" data-ng-class="{'has-error' : form.keep.$error.required && submitted}">
-						<select class="form-control" name="supplytype" id="role" data-ng-model="building.supply_type" data-ng-options="supplyTypeOption.value as supplyTypeOption.label for supplyTypeOption in supplyTypeOptions" required>
+						<select class="form-control" name="supplytype" id="supplyTypeOption" data-ng-model="building.supply_type" data-ng-options="supplyTypeOption.value as supplyTypeOption.label for supplyTypeOption in supplyTypeOptions" required>
 					    	<option value="">-供暖类型-</option>
 						</select>	
 						<p class="help-block" data-ng-show="form.supplytype.$error.required && submitted">Required</p>
 					</div>
 					<div class="form-group" data-ng-class="{'has-error' : form.close.$error.required && submitted}">
-						<select class="form-control" name="close" id="role" data-ng-model="building.closeCondition" data-ng-options="closeConditionTypeOption.value as closeConditionTypeOption.label for closeConditionTypeOption in closeConditionTypeOptions" required>
+						<select class="form-control" name="close" id="closeCondition" data-ng-model="building.closeCondition" data-ng-options="closeConditionTypeOption.value as closeConditionTypeOption.label for closeConditionTypeOption in closeConditionTypeOptions" required>
 					    	<option value="">-密闭情况-</option>
 						</select>	
 						<p class="help-block" data-ng-show="form.close.$error.required && submitted">Required</p>
@@ -76,8 +76,8 @@
 				</form>
 			</div>
 			<div class="modal-footer">
-				<button type="submit" class="btn btn-primary" data-ng-click="doSave()">Save</button>
-				<button type="button" class="btn btn-info" data-ng-click="$hide()">Cancel</button>
+				<button id="dobt" type="submit" class="btn btn-primary" data-ng-click="doSave()">Save</button>
+				<button id="cancelbt" type="button" class="btn btn-info" data-ng-click="$hide()">Cancel</button>
 			</div>
 		</div>
 	</div>

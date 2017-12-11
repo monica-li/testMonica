@@ -15,79 +15,79 @@
 					
 					<div class="form-group" data-ng-class="{'has-error' : form.SN.$error.required && submitted}">
 						<label for="name">日期 *</label> 
-						<input name="" class="form-control" style="width:150px;" placeholder="day" data-ng-model="weather.day" data-bs-datepicker date-format="yyyy-MM-dd" type="text" required>
+						<input id="date" name="date" class="form-control" style="width:150px;" placeholder="day" data-ng-model="weather.day" data-bs-datepicker date-format="yyyy-MM-dd" type="text" required>
 						<p class="help-block" data-ng-show="form.day.$error.required && submitted">Required</p>
 					</div>
 					
 					<div class="form-group">
 						<label for="district">小时 *</label> 	
-						<select class="form-control" name="hour" data-ng-model="weather.hour" data-ng-options="d for d in hours">
+						<select id="hour" class="form-control" name="hour" data-ng-model="weather.hour" data-ng-options="d for d in hours">
 							<option value="">0</option>
 						</select>
 					</div>
 					
 					<div class="form-group">
 						<label for="name">省 *</label> 
-						<select class="form-control" name="hour" data-ng-model="weather.province" data-ng-options="p for p in getProvinces()" required>
+						<select id="province" class="form-control" name="province" data-ng-model="weather.province" data-ng-options="p for p in getProvinces()" required>
 							<option value="">-省-</option>
 						</select>
 					</div>
 					
 					<div class="form-group">
 						<label for="name">市 *</label> 
-						<select class="form-control" name="hour" data-ng-model="weather.city" data-ng-options="c for c in getCities()" required>
+						<select id="city" class="form-control" name="city" data-ng-model="weather.city" data-ng-options="c for c in getCities()" required>
 							<option value="">-市-</option>
 						</select>
 					</div>
 					
 					<div class="form-group">
 						<label for="name">区 *</label> 
-						<select class="form-control" name="hour" data-ng-model="weather.district" data-ng-options="dis for dis in getDistricts()" required>
+						<select id="district" class="form-control" name="district" data-ng-model="weather.district" data-ng-options="dis for dis in getDistricts()" required>
 							<option value="">-区-</option>
 						</select>
 					</div>
 					
 					<div class="form-group" >
 						<label for="name">街道</label> 
-						<input type="text" name="name" class="form-control" id="name" data-ng-model="weather.street" placeholder="street">
+						<input id="street" type="text" name="street" class="form-control" id="name" data-ng-model="weather.street" placeholder="street">
 					</div>
 					
 					<div class="form-group">
 						<label for="name">日照情况</label> 
-						<select class="form-control" name="hour" data-ng-model="weather.lightCondition" data-ng-options="lightConditionOption.value as lightConditionOption.label for lightConditionOption in lightConditionOptions" required>
+						<select id="lightCondition" class="form-control" name="lightCondition" data-ng-model="weather.lightCondition" data-ng-options="lightConditionOption.value as lightConditionOption.label for lightConditionOption in lightConditionOptions" required>
 							<option value="">-日照情况-</option>
 						</select>
 					</div>
 					
 					<div class="form-group">
 						<label for="name">降水情况</label> 
-						<select class="form-control" name="hour" data-ng-model="weather.rainCondition" data-ng-options="rainConditionOption.value as rainConditionOption.label for rainConditionOption in rainConditionOptions" required>
+						<select id="rainCondition" class="form-control" name="rainCondition" data-ng-model="weather.rainCondition" data-ng-options="rainConditionOption.value as rainConditionOption.label for rainConditionOption in rainConditionOptions" required>
 							<option value="">-降水情况-</option>
 						</select>
 					</div>
 					
 					<div class="form-group">
 						<label for="name">风力</label> 
-						<select class="form-control" name="hour" data-ng-model="weather.wind_speed" data-ng-options="windSpeedOption.value as windSpeedOption.label for windSpeedOption in windSpeedOptions" required>
+						<select id="wind_speed" class="form-control" name="wind_speed" data-ng-model="weather.wind_speed" data-ng-options="windSpeedOption.value as windSpeedOption.label for windSpeedOption in windSpeedOptions" required>
 							<option value="">-风力-</option>
 						</select>
 					</div>
 					
 					<div class="form-group" >
 						<label for="name">温度 *</label> 
-						<input type="text" name="name" class="form-control" id="name" data-ng-model="weather.temprature" placeholder="temprature" required>
+						<input id="temprature" type="text" name="temprature" class="form-control" data-ng-model="weather.temprature" placeholder="temprature" required>
 					</div>
 					
 					<div class="form-group" >
 						<label for="name">湿度</label> 
-						<input type="text" name="name" class="form-control" id="name" data-ng-model="weather.humity" placeholder="humity">
+						<input id="humity" type="text" name="humity" class="form-control" data-ng-model="weather.humity" placeholder="humity">
 					</div>
 					
 				</form>
 			</div>
 			<div class="modal-footer">
-				<button type="submit" class="btn btn-primary" data-ng-click="doSave()">保存</button>
-				<button type="button" class="btn btn-info" data-ng-click="$hide()">取消</button>
+				<button id="dobt" type="submit" class="btn btn-primary" data-ng-click="doSave()">保存</button>
+				<button id="cancelbt" type="button" class="btn btn-info" data-ng-click="$hide()">取消</button>
 			</div>
 		</div>
 	</div>

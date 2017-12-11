@@ -15,7 +15,7 @@
 					
 					<div class="form-inline">
 						<div class="form-group">
-							<select data-ng-model="ratio" data-ng-options="Option.value as boilingOption.label for boilingOption in boilingOptions" class="form-control">
+							<select id="selectfire" data-ng-model="ratio" data-ng-options="Option.value as boilingOption.label for boilingOption in boilingOptions" class="form-control">
 								<option value="">-选择-</option>
 							</select>
 						</div>
@@ -24,8 +24,8 @@
 				</form>
 			</div>
 			<div class="modal-footer">
-				<button type="submit" class="btn btn-primary" data-ng-click="doSave()">确认</button>
-				<button type="button" class="btn btn-info" data-ng-click="$hide()">取消</button>
+				<button id="dobt" type="submit" class="btn btn-primary" data-ng-click="doSave()">确认</button>
+				<button id="cancelbt" type="button" class="btn btn-info" data-ng-click="$hide()">取消</button>
 			</div>
 		</div>
 	</div>

@@ -54,31 +54,31 @@
 			<div class="col-md-2">
 				<div class="vk-menu">
 					<ul class="nav nav-pills nav-stacked">
-						<li data-ng-if="isActive('/user')" data-ng-class="{active: isActive('/user/company/companys')}"><a href="/user/company/companys">公司</a></li>
-						<li data-ng-if="isActive('/user')" data-ng-class="{active: isActive('/user/operator/operators')}"><a href="/user/operator/operators">操作员</a></li>
-						<li data-ng-if="isActive('/summary')" data-ng-class="{active:isActive('/summary/project/statusSummary')}"><a href="/summary/project/statusSummary">项目总览</a>
+						<li id="company" data-ng-if="isActive('/user')" data-ng-class="{active: isActive('/user/company/companys')}"><a href="/user/company/companys">公司</a></li>
+						<li id="operator" data-ng-if="isActive('/user')" data-ng-class="{active: isActive('/user/operator/operators')}"><a href="/user/operator/operators">操作员</a></li>
+						<li id="statussummary" data-ng-if="isActive('/summary')" data-ng-class="{active:isActive('/summary/project/statusSummary')}"><a href="/summary/project/statusSummary">项目总览</a>
 						
-						<li data-ng-if="isActive('/project') && !isProject()" data-ng-class="{active: isActive('/project/project/projects')}"><a href="/project/project/projects">项目</a></li>
-						<li data-ng-if="isActive('/project') && isProject()" data-ng-class="{active: isActive('/project/project/projectInfo')}"><a href="/project/project/projectInfo">基本信息</a></li>
-						<li data-ng-if="isActive('/project')" data-ng-class="{active: isActive('/project/project/buildings')}"><a href="/project/project/buildings">建筑</a></li>
-						<li data-ng-if="isActive('/project')" data-ng-class="{active: isActive('/project/project/obvsites')}"><a href="/project/project/obvsites">观测点</a></li>
-						<li data-ng-if="isActive('/project')" data-ng-class="{active: isActive('/project/project/boilings')}"><a href="/project/project/boilings">锅炉</a></li>
-						<li data-ng-if="isActive('/project')" data-ng-class="{active: isActive('/project/project/boilinggroups')}"><a href="/project/project/boilinggroups">锅炉分组</a></li>
-						<li data-ng-if="isActive('/project')" data-ng-class="{active: isActive('/project/project/controllers')}"><a href="/project/project/controllers">控制器</a></li>
+						<li id="projects" data-ng-if="isActive('/project') && !isProject()" data-ng-class="{active: isActive('/project/project/projects')}"><a href="/project/project/projects">项目</a></li>
+						<li id="projectInfo" data-ng-if="isActive('/project') && isProject()" data-ng-class="{active: isActive('/project/project/projectInfo')}"><a href="/project/project/projectInfo">基本信息</a></li>
+						<li id="buildings" data-ng-if="isActive('/project')" data-ng-class="{active: isActive('/project/project/buildings')}"><a href="/project/project/buildings">建筑</a></li>
+						<li id="obvsites" data-ng-if="isActive('/project')" data-ng-class="{active: isActive('/project/project/obvsites')}"><a href="/project/project/obvsites">观测点</a></li>
+						<li id="boilings" data-ng-if="isActive('/project')" data-ng-class="{active: isActive('/project/project/boilings')}"><a href="/project/project/boilings">锅炉</a></li>
+						<li id="boilinggroups" data-ng-if="isActive('/project')" data-ng-class="{active: isActive('/project/project/boilinggroups')}"><a href="/project/project/boilinggroups">锅炉分组</a></li>
+						<li id="controllers" data-ng-if="isActive('/project')" data-ng-class="{active: isActive('/project/project/controllers')}"><a href="/project/project/controllers">控制器</a></li>
 						
-						<li data-ng-if="isActive('/monitor')" data-ng-class="{active: isActive('/monitor/weather/metaweathers')}"><a href="/monitor/weather/metaweathers">项目综合天气数据</a></li>
-						<li data-ng-if="isActive('/monitor')" data-ng-class="{active: isActive('/monitor/weather/detailweathers')}"><a href="/monitor/weather/detailweathers">分时天气数据</a></li>
-						<li data-ng-if="isActive('/monitor')" data-ng-class="{active: isActive('/monitor/monitor/datas')}"><a href="/monitor/monitor/datas">室内监测数据温度</a></li>
-						<li data-ng-if="isActive('/monitor')" data-ng-class="{active: isActive('/monitor/wmonitor/datas')}"><a href="/monitor/wmonitor/datas">室外监测数据温度</a></li>
+						<li id="metaweathers" data-ng-if="isActive('/monitor')" data-ng-class="{active: isActive('/monitor/weather/metaweathers')}"><a href="/monitor/weather/metaweathers">项目综合天气数据</a></li>
+						<li id="detailweathers" data-ng-if="isActive('/monitor')" data-ng-class="{active: isActive('/monitor/weather/detailweathers')}"><a href="/monitor/weather/detailweathers">分时天气数据</a></li>
+						<li id="monitordatas" data-ng-if="isActive('/monitor')" data-ng-class="{active: isActive('/monitor/monitor/datas')}"><a href="/monitor/monitor/datas">室内监测数据温度</a></li>
+						<li id="wmonitordatas" data-ng-if="isActive('/monitor')" data-ng-class="{active: isActive('/monitor/wmonitor/datas')}"><a href="/monitor/wmonitor/datas">室外监测数据温度</a></li>
 						
 						
-						<li data-ng-if="isActive('/operate')" data-ng-class="{active: isActive('/operate/operate/operations')}"><a href="/operate/operate/operations">执行日志</a></li>
-						<li data-ng-if="isActive('/operate')" data-ng-class="{active: isActive('/operate/runningdata/runningdatas')}"><a href="/operate/runningdata/runningdatas">运行状态</a></li>
-						<li data-ng-if="isActive('/operate')" data-ng-class="{active: isActive('/operate/daydata/datas')}"><a href="/operate/daydata/datas">日汇总</a></li>
-						<li data-ng-if="isActive('/operate')" data-ng-class="{active: isActive('/operate/weekdata/datas')}"><a href="/operate/weekdata/datas">周汇总</a></li>
-						<li data-ng-if="isActive('/operate')" data-ng-class="{active: isActive('/operate/monthdata/datas')}"><a href="/operate/monthdata/datas">月汇总</a></li>
-						<li data-ng-if="isActive('/operate')" data-ng-class="{active: isActive('/operate/sessiondata/datas')}"><a href="/operate/sessiondata/datas">季汇总</a></li>
-						<li data-ng-if="isActive('/operate')" data-ng-class="{active: isActive('/operate/predict/predicts')}"><a href="/operate/predict/predicts">预测数据</a></li>
+						<li id="operations" data-ng-if="isActive('/operate')" data-ng-class="{active: isActive('/operate/operate/operations')}"><a href="/operate/operate/operations">执行日志</a></li>
+						<li id="runningdatas" data-ng-if="isActive('/operate')" data-ng-class="{active: isActive('/operate/runningdata/runningdatas')}"><a href="/operate/runningdata/runningdatas">运行状态</a></li>
+						<li id="daydata" data-ng-if="isActive('/operate')" data-ng-class="{active: isActive('/operate/daydata/datas')}"><a href="/operate/daydata/datas">日汇总</a></li>
+						<li id="weekdata" data-ng-if="isActive('/operate')" data-ng-class="{active: isActive('/operate/weekdata/datas')}"><a href="/operate/weekdata/datas">周汇总</a></li>
+						<li id="monthdata" data-ng-if="isActive('/operate')" data-ng-class="{active: isActive('/operate/monthdata/datas')}"><a href="/operate/monthdata/datas">月汇总</a></li>
+						<li id="sessiondata" data-ng-if="isActive('/operate')" data-ng-class="{active: isActive('/operate/sessiondata/datas')}"><a href="/operate/sessiondata/datas">季汇总</a></li>
+						<li id="predicts" data-ng-if="isActive('/operate')" data-ng-class="{active: isActive('/operate/predict/predicts')}"><a href="/operate/predict/predicts">预测数据</a></li>
 								
 					</ul>
 				</div>
