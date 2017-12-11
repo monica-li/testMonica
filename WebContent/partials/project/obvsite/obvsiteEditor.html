@@ -1,0 +1,55 @@
+<div class="modal" tabindex="-1" data-role="dialog" data-ng-controller="ObvsiteEditorController">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-ng-click="$hide()">&times;</button>
+				<h4 class="modal-title">
+					<strong>监测点</strong>
+				</h4>
+			</div>
+			<div class="modal-body">
+				<form data-role="form" name="form">
+					<div class="form-group" data-ng-show="error != null">
+						<div class="alert alert-danger">{{error}}</div>
+					</div>
+					
+					<div class="form-group" data-ng-class="{'has-error' : form.SN.$error.required && submitted}">
+						<label for="name">编号 *</label> 
+						<input type="text" name="SN" class="form-control" id="obvsite.SN" data-ng-model="obvsite.SN" placeholder="SN" required>
+						<p class="help-block" data-ng-show="form.SN.$error.required && submitted">Required</p>
+					</div>
+					
+					<div class="form-group">
+						<label for="district">District</label> 	
+						<select class="form-control" name="district" data-ng-model="obvsite.district" data-ng-options="d for d in getDistricts()">
+							<option value="">-区-</option>
+						</select>
+					</div>
+					
+					<div class="form-group">
+						<label for="name">小区名称</label> 
+						<input type="text" name="SN" class="form-control" id="obvsite.block" data-ng-model="obvsite.block" placeholder="小区名称" required>
+					</div>
+					
+					<div class="form-group" data-ng-class="{'has-error' : form.type.$error.required && submitted}">
+						<select class="form-control" name="building" id="building" data-ng-model="obvsite.building.id" data-ng-options="buildingOption.value as buildingOption.label for buildingOption in buildingOptions">
+					    	<option value="">-所属建筑-</option>
+						</select>	
+						<p class="help-block" data-ng-show="form.type.$error.required && submitted">Required</p>
+					</div>
+					
+					<div class="form-group" data-ng-class="{'has-error' : form.keep.$error.required && submitted}">
+						<select class="form-control" name="isTowardSun" id="isTowardSun" data-ng-model="obvsite.isTowardSun" data-ng-options="isTowardSunOption.value as isTowardSunOption.label for isTowardSunOption in isTowardSunOptions">
+					    	<option value="">-是否朝阳-</option>
+						</select>	
+						<p class="help-block" data-ng-show="form.isInside.$error.required && submitted">Required</p>
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="submit" class="btn btn-primary" data-ng-click="doSave()">Save</button>
+				<button type="button" class="btn btn-info" data-ng-click="$hide()">Cancel</button>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,51 @@
+<div class="vk-article">
+	<div class="vk-form">
+		<h1>欢迎登陆热云管理系统</h1>
+
+		<form class="form" name="form" data-ng-submit="doLogin(form)" novalidate>
+			<div class="form-group row" data-ng-show="error != null">
+				<div class="col-sm-12 col-md-7">
+					<div class="alert alert-danger">{{error}}</div>
+				</div>
+			</div>
+			
+			<div class="form-group row" data-ng-class="{ 'has-success': form.username.$valid && submitted, 'has-error': form.username.$invalid && (form.username.$dirty || submitted) }">
+				<div class="col-sm-12 col-md-7">
+					<input type="text" name="username" class="form-control input-lg" data-ng-model="credential.username" placeholder="mobile" />
+					<p class="help-block" data-ng-show="form.username.$error.required && submitted">Required</p>
+					<p class="help-block" data-ng-show="form.username.$error.pattern">Not a mobile number</p>
+				</div>
+			</div>
+
+			<div class="form-group row" data-ng-class="{'has-success': form.password.$valid && submitted, 'has-error': form.password.$invalid && (form.password.$dirty || submitted) }">
+				<div class="col-sm-12 col-md-7">
+					<input type="password" name="password" class="form-control input-lg" data-ng-model="credential.password" placeholder="password" required data-ng-pattern="/^\w{6,12}$/" />
+					<p class="help-block" data-ng-show="form.password.$error.required && (form.password.$dirty || submitted)">Required</p>
+					<p class="help-block" data-ng-show="form.password.$error.pattern">Password should be a combination of 6-12 English characters, numbers or under score.</p>
+				</div>
+			</div>
+			
+			<!--  
+			<div class="form-group row" data-ng-class="{'has-success': form.password.$valid && submitted, 'has-error': form.password.$invalid && (form.password.$dirty || submitted) }">
+				<div class="col-sm-12 col-md-7">
+				<select class="form-control" name="gender" id="role" data-ng-model="credential.role" data-ng-options="roleOption.value as roleOption.label for roleOption in roleOptions" required>
+					    <option value="">-账户类型-</option>
+					</select>	
+					<p class="help-block" data-ng-show="form.gender.$error.required && submitted">Required</p>
+					
+				</div>
+			</div>
+			-->
+			
+			
+			<div class="form-group">
+				<div class="checkbox">
+					<label><input type="checkbox" name="rememberPassword" data-ng-model="rememberPassword">remember password</label>
+				</div>
+			</div>
+
+			<button type="submit" class="btn btn-lg btn-primary" data-ng-disabled="form.mobile.$invalid || form.password.$invalid">Login</button>
+		</form>
+	</div>
+
+</div>

@@ -1,0 +1,16 @@
+<div>
+	<div class="row vk-search-bar">
+		<form class="form-inline" data-role="form" name="form" data-ng-submit="doSearch()">
+			<div class="form-group">
+				<input type="text" class="form-control" placeholder="项目名称" data-ng-model="condition.search">
+			</div>
+			<button type="submit" class="btn btn-primary">Search</button>
+			<button class="btn btn-primary" data-ng-click="doReset()">Reset</button>
+		</form>
+	</div>
+	<div class="vk-grid" data-ng-grid="gridOptions"></div>
+	
+	<div class="vk-actions">
+    	<button type="button" class="btn btn-primary" data-ng-click="doOpenEditModal()">New</button>
+    </div>
+</div>

@@ -1,0 +1,25 @@
+<div>
+	<div class="row vk-search-bar">
+		<form class="form-inline" data-role="form" name="form" data-ng-submit="doSearch()">
+			<div class="form-group">
+				<input type="text" class="form-control" placeholder="Name/Mobile" data-ng-model="condition.search">
+			</div>
+			<div class="form-group">
+				<input class="form-control" style="width:150px;" placeholder="Register Time From" data-ng-model="condition.registerDateTimeFrom" data-bs-datepicker type="text">
+				<input class="form-control" style="width:150px;" placeholder="To" data-ng-model="condition.registerDateTimeTo" data-bs-datepicker type="text">
+			</div>
+			<div class="form-group">
+				<select data-ng-model="condition.status" data-ng-options="userStatusOption.value as userStatusOption.label for userStatusOption in userStatusOptions" class="form-control">
+					<option value="">-Status-</option>
+				</select>
+			</div>
+			<button type="submit" class="btn btn-primary">Search</button>
+			<button class="btn btn-primary" data-ng-click="doReset()">Reset</button>
+		</form>
+	</div>
+	<div class="vk-grid" data-ng-grid="gridOptions"></div>
+	
+	<div class="vk-actions">
+    	<button type="button" class="btn btn-primary" data-ng-click="doOpenEditModal()">New</button>
+    </div>
+</div>

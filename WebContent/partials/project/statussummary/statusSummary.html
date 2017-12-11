@@ -1,0 +1,201 @@
+<style>
+body {
+	font-size: 13px;
+}
+
+.table-striped>thead>tr>th {
+	font-size: 13px;
+	border-width: 1px;
+}
+
+.table-striped>tbody>tr:nth-child(2n+1)>td {
+	background-color: #ffffff;
+	padding: 8px;
+	vertical-align: middle;
+	border-width: 0px 0px 2px 0px;
+	border-color: #f3fae2;
+}
+
+.table-striped>tbody>tr:nth-child(2n)>td {
+	background-color: #e5ecd7;
+	padding: 8px;
+	vertical-align: middle;
+	border-width: 0px 0px 2px 0px;
+	border-color: #f3fae2;
+}
+
+.tab-content {
+	border-style: solid;
+	border-width: 1px;
+	border-color: #c0e178;
+}
+
+.detailCheckEnabled {
+	width: 82px;
+	height: 23px;
+	border-width: 0px;
+}
+
+.detailCheckDisabled {
+	width: 82px;
+	height: 23px;
+	border-width: 0px;
+}
+
+ul#tableTabs>li.active>a {
+	font-size: 14px;
+	background-color: #f3fae2;
+	border-style: solid;
+	border-width: 1px;
+	border-color: #c0e178;
+	border-top-width: 3px;
+	border-bottom-width: 0px;
+	z-index: 1;
+	position: relative;
+	bottom: -1px;
+	height: 44px;
+}
+
+ul#tableTabs>li>a {
+	font-size: 14px;
+	background-color: #f9f9f1;
+	border-style: solid;
+	border-width: 1px;
+	border-color: #c0e178;
+	position: relative;
+	bottom: -1px;
+	height: 43px;
+}
+</style>
+<div class="tab-content" style="line-height:40px;">
+	<div class="row">
+		<div class="col-md-4">室外温度：{{wMonitorData.temprature}}</div>
+		<div class="col-md-4">室内温度：{{monitorData.temprature}}</div>
+		<div class="col-md-4">
+			<a href="" class="btn btn-primary btn-sm" data-ng-click="doOpenAddConfirmer(project)">增加</a>
+		</div>
+	</div>
+</div>
+<hr />
+<div class="tab-content">
+	<div class="row">
+		<div class="col-md-6">今日能耗：</div>
+	</div>
+	<div
+		style="padding-left: 8px; padding-right: 8px; z-index: 1; position: relative; top: 0px; left: 0px;">
+		<table class="table table-striped no-repeat">
+			<thead>
+				<tr>
+					<th>时间段</th>
+					<th>室外温度</th>
+					<th>室外风力</th>
+					<th>计算热量</th>
+					<th>计算燃气量</th>
+					<th>调节燃气量</th>
+					<th>调节热量</th>
+					<th>室内温度</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr data-ng-repeat="runningData in runningDatas">
+					<td>{{runningData.from_time | date : 'HH:mm:ss'}} - {{runningData.to_time | date : 'HH:mm:ss'}}</td>
+					<td>{{runningData.metaWMonitorData.temprature}}</td>
+					<td>{{runningData.metaWMonitorData.wind_speed}}</td>
+					<td>{{runningData.cal_cost}}</td>
+					<td>{{runningData.cal_gas_cost}}</td>
+					<td>{{runningData.correct_cost}}</td>
+					<td>{{runningData.correct_gas_cost}}</td>
+					<td>{{runningData.metaMonitorData.temprature}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+<hr />
+<div class="tab-content">
+	<div class="row">
+		<div class="col-md-6">控制器</div>
+	</div>
+	<div
+		style="padding-left: 8px; padding-right: 8px; z-index: 1; position: relative; top: 0px; left: 0px;">
+		<table class="table table-striped no-repeat">
+			<thead>
+				<tr>
+					<th>编号</th>
+					<th>状态</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr data-ng-repeat="controller in controllers">
+					<td>{{controller.SN}}</td>
+					<td>{{controller.status | ControllerStatusLocalize}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+<hr />
+<div class="tab-content">
+	<div class="row">
+		<div class="col-md-6">锅炉：</div>
+	</div>
+	<div
+		style="padding-left: 8px; padding-right: 8px; z-index: 1; position: relative; top: 0px; left: 0px;">
+		<table class="table table-striped no-repeat">
+			<thead>
+				<tr>
+					<th>编号</th>
+					<th>状态</th>
+					<th>今日能耗</th>
+					<th>昨日能耗</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr data-ng-repeat="boiling in boilings">
+					<td>{{boiling.SN}}</td>
+					<td>{{boiling.status}}</td>
+					<td>{{boiling.yesterday_consumption}}</td>
+					<td>{{boiling.today_consumption}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<hr />
+</div>
+
+<hr />
+
+<div class="tab-content">
+	<div class="row">
+		<div class="col-md-6">最近五日能耗：</div>
+	</div>
+	<div
+		style="padding-left: 8px; padding-right: 8px; z-index: 1; position: relative; top: 0px; left: 0px;">
+		<table class="table table-striped no-repeat">
+			<thead>
+				<tr>
+					<th>日期</th>
+					<th>室外温度</th>
+					<th>室外风力</th>
+					<th>计算热量</th>
+					<th>计算燃气量</th>
+					<th>调节燃气量</th>
+					<th>调节热量</th>
+					<th>室内温度</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr data-ng-repeat="dayData in dayDatas">
+					<td>{{dayData.from_time | date : 'YYYY-MM-DD HH:mm:ss'}}-{{dayData.to_time | date : 'YYYY-MM-DD HH:mm:ss'}}</td>
+					<td>{{dayData.temprature}}</td>
+					<td>{{dayData.wind_speed}}</td>
+					<td>{{dayData.cal_q_cost}}</td>
+					<td>{{dayData.cal_gas_cost}}</td>
+					<td>{{dayData.correct_q_cost}}</td>
+					<td>{{dayData.correct_gas_cose}}</td>
+					<td>{{dayData.room_temprature}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>

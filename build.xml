@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- WARNING: Eclipse auto-generated file.
+              Any modifications will be overwritten.
+              To include a user specific buildfile here, simply create one in the same
+              directory with the processing instruction <?eclipse.ant.import?>
+              as the first entry and export the buildfile again. -->
+<project basedir="." default="deploy" name="VIPKIDLearningWebServer">
+    <property environment="env"/>
+    <property name="debuglevel" value="source,lines,vars"/>
+    <property name="target" value="1.7"/>
+    <property name="source" value="1.7"/>
+	<property name="host" value="182.92.78.65"/>
+	<target name="deployprepare">
+		<replace file ="WebContent/scripts/services/services.js" token="localhost" value="management.vipkid.com.cn" />
+    	<sshexec host="${host}" username="root"  password="bb946628" trust="true" 
+    		command="rm -rf /usr/share/nginx/ManagementWebServer/*"/>
+	</target>
+    <target name="deploying" depends="deployprepare">
+    	<scp todir="root:bb946628@${host}:/usr/share/nginx/ManagementWebServer" trust="true">
+    		<fileset dir="WebContent" />
+    	</scp>
+    </target>
+	<target name="clean" depends="deploying">
+		<replace file ="WebContent/scripts/services/services.js" token="management.vipkid.com.cn" value="localhost" />
+	</target>
+	<target name="deploy" depends="clean">
+	</target>
+</project>

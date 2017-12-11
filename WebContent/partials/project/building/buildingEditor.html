@@ -1,0 +1,84 @@
+<div class="modal" tabindex="-1" data-role="dialog" data-ng-controller="BuildingEditorController">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-ng-click="$hide()">&times;</button>
+				<h4 class="modal-title">
+					<strong>Building</strong>
+				</h4>
+			</div>
+			<div class="modal-body">
+				<form data-role="form" name="form">
+					<div class="form-group" data-ng-show="error != null">
+						<div class="alert alert-danger">{{error}}</div>
+					</div>
+					<div class="form-group">
+						<label for="district">District</label> 	
+						<select class="form-control" name="district" data-ng-model="building.district" data-ng-options="dis1 for dis1 in getDistricts()">
+							<option value="">-区-</option>
+						</select>
+					</div>
+					
+					<div class="form-group" data-ng-class="{'has-error' : form.block.$error.required && submitted}">
+						<label for="name">小区名称 *</label> 
+						<input type="text" name="block" class="form-control" id="building.block" data-ng-model="building.block" placeholder="block" required>
+						<p class="help-block" data-ng-show="form.block.$error.required && submitted">Required</p>
+					</div>
+					
+					<div class="form-group" data-ng-class="{'has-error' : form.buildingname.$error.required && submitted}">
+						<label for="name">建筑名称 *</label> 
+						<input type="text" name="buildingname" class="form-control" id="building.buildingname" data-ng-model="building.buildingname" placeholder="buildingname" required>
+						<p class="help-block" data-ng-show="form.buildingname.$error.required && submitted">Required</p>
+					</div>
+					
+					<div class="form-group" data-ng-class="{'has-error' : form.type.$error.required && submitted}">
+						<select class="form-control" name="type" id="role" data-ng-model="building.building_type" data-ng-options="buildingTypeOption.value as buildingTypeOption.label for buildingTypeOption in buildingTypeOptions" required>
+					    	<option value="">-建筑类型-</option>
+						</select>	
+						<p class="help-block" data-ng-show="form.type.$error.required && submitted">Required</p>
+					</div>
+					
+					<div class="form-group" data-ng-class="{'has-error' : form.keep.$error.required && submitted}">
+						<select class="form-control" name="keep" id="role" data-ng-model="building.keepCondition" data-ng-options="keepConditionTypeOption.value as keepConditionTypeOption.label for keepConditionTypeOption in keepConditionTypeOptions" required>
+					    	<option value="">-保温情况-</option>
+						</select>	
+						<p class="help-block" data-ng-show="form.keep.$error.required && submitted">Required</p>
+					</div>
+					<div class="form-group" data-ng-class="{'has-error' : form.keep.$error.required && submitted}">
+						<select class="form-control" name="supplytype" id="role" data-ng-model="building.supply_type" data-ng-options="supplyTypeOption.value as supplyTypeOption.label for supplyTypeOption in supplyTypeOptions" required>
+					    	<option value="">-供暖类型-</option>
+						</select>	
+						<p class="help-block" data-ng-show="form.supplytype.$error.required && submitted">Required</p>
+					</div>
+					<div class="form-group" data-ng-class="{'has-error' : form.close.$error.required && submitted}">
+						<select class="form-control" name="close" id="role" data-ng-model="building.closeCondition" data-ng-options="closeConditionTypeOption.value as closeConditionTypeOption.label for closeConditionTypeOption in closeConditionTypeOptions" required>
+					    	<option value="">-密闭情况-</option>
+						</select>	
+						<p class="help-block" data-ng-show="form.close.$error.required && submitted">Required</p>
+					</div>
+					<div class="form-group" data-ng-class="{'has-error' : form.size.$error.required && submitted}">
+						<label for="name">建筑面积（平方米）</label> 
+						<input type="text" name="size" class="form-control" id="size" data-ng-model="building.building_size" placeholder="building_size" required>
+						<p class="help-block" data-ng-show="form.building_size.$error.required && submitted">Required</p>
+					</div>
+					
+					<div class="form-group" data-ng-class="{'has-error' : form.size.$error.required && submitted}">
+						<label for="name">白天温度</label> 
+						<input type="text" name="dt_temp" class="form-control" id="dt_temp" data-ng-model="building.daytime_temprature" placeholder="dt_temp">
+						<p class="help-block" data-ng-show="form.dt_temp.$error.required && submitted">Required</p>
+					</div>
+					
+					<div class="form-group" data-ng-class="{'has-error' : form.size.$error.required && submitted}">
+						<label for="name">夜晚温度</label> 
+						<input type="text" name="nt_temp" class="form-control" id="nt_temp" data-ng-model="building.nighttime_temprature" placeholder="nt_temp">
+						<p class="help-block" data-ng-show="form.nt_temp.$error.required && submitted">Required</p>
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="submit" class="btn btn-primary" data-ng-click="doSave()">Save</button>
+				<button type="button" class="btn btn-info" data-ng-click="$hide()">Cancel</button>
+			</div>
+		</div>
+	</div>
+</div>

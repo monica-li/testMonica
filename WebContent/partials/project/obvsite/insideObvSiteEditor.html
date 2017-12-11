@@ -1,0 +1,71 @@
+<div class="modal" tabindex="-1" data-role="dialog" data-ng-controller="ObvsiteEditorController">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-ng-click="$hide()">&times;</button>
+				<h4 class="modal-title">
+					<strong>监测点</strong>
+				</h4>
+			</div>
+			<div class="modal-body">
+				<form data-role="form" name="form">
+					<div class="form-group" data-ng-show="error != null">
+						<div class="alert alert-danger">{{error}}</div>
+					</div>
+					
+					<div class="form-group" data-ng-class="{'has-error' : form.SN.$error.required && submitted}">
+						<label for="name">编号 *</label> 
+						<input type="text" name="SN" class="form-control" id="obvsite.SN" data-ng-model="obvsite.SN" placeholder="SN" required>
+						<p class="help-block" data-ng-show="form.SN.$error.required && submitted">Required</p>
+					</div>
+					
+					<div class="form-group" data-ng-class="{'has-error' : form.type.$error.required && submitted}">
+						<select class="form-control" name="building" id="building" data-ng-model="obvsite.building.id" data-ng-options="buildingOption.value as buildingOption.label for buildingOption in buildingOptions">
+					    	<option value="">-所属建筑-</option>
+						</select>	
+						<p class="help-block" data-ng-show="form.type.$error.required && submitted">Required</p>
+					</div>
+					
+					<div class="form-group" data-ng-class="{'has-error' : form.keep.$error.required && submitted}">
+						<select class="form-control" name="isTowardSun" id="isTowardSun" data-ng-model="obvsite.isTowardSun" data-ng-options="isTowardSunOption.value as isTowardSunOption.label for isTowardSunOption in isTowardSunOptions">
+					    	<option value="">-是否朝阳-</option>
+						</select>	
+						<p class="help-block" data-ng-show="form.isInside.$error.required && submitted">Required</p>
+					</div>
+					
+					<div class="form-group" data-ng-class="{'has-error' : form.SN.$error.required && submitted}">
+						<label for="name">单元号</label> 
+						<input type="text" name="unit" class="form-control" id="obvsite.unit" data-ng-model="obvsite.unit" placeholder="unit">
+						<p class="help-block" data-ng-show="form.unit.$error.required && submitted">Required</p>
+					</div>
+					<div class="form-group" data-ng-class="{'has-error' : form.room.$error.required && submitted}">
+						<label for="name">房间号</label> 
+						<input type="text" name="room" class="form-control" id="obvsite.SN" data-ng-model="obvsite.room" placeholder="room">
+						<p class="help-block" data-ng-show="form.room.$error.required && submitted">Required</p>
+					</div>
+					<div class="form-group">
+						<select class="form-control" name="location" id="location" data-ng-model="obvsite.location" data-ng-options="obvSiteLocationOption.value as obvSiteLocationOption.label for obvSiteLocationOption in obvSiteLocationOptions">
+					    	<option value="">-安装位置-</option>
+						</select>
+					</div>
+					<div class="form-group">
+						<label for="name">报警电话号码，多个号码请用逗号隔开</label> 
+						<input type="text" name="sms" class="form-control" id="obvsite.sms" data-ng-model="obvsite.sms" placeholder="sms">
+					</div>
+					<div class="form-group">
+						<label for="name">高温报警设置</label> 
+						<input type="text" name="unit" class="form-control" id="obvsite.highTemprature" data-ng-model="obvsite.highTemprature" placeholder="高温报警">
+					</div>
+					<div class="form-group">
+						<label for="name">低温报警设置</label> 
+						<input type="text" name="unit" class="form-control" id="obvsite.lowTemprature" data-ng-model="obvsite.lowTemprature" placeholder="低温报警">
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="submit" class="btn btn-primary" data-ng-click="doSave()">Save</button>
+				<button type="button" class="btn btn-info" data-ng-click="$hide()">Cancel</button>
+			</div>
+		</div>
+	</div>
+</div>

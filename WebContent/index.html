@@ -1,0 +1,159 @@
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]> <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]> <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="zh-cn">
+<!--<![endif]-->
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<base href="/">
+<title>管理系统</title>
+<meta name="viewport" content="width=device-width">
+<link rel="stylesheet" href="styles/bootswatch/united/bootstrap.min.css" />
+<link rel="stylesheet" href="styles/angular-ui/ng-grid/ng-grid.min.css" />
+<link rel="stylesheet" href="styles/angular-motion/angular-motion.min.css" />
+<link rel="stylesheet" href="libraries/fullcalendar/fullcalendar.css" />
+<link rel="stylesheet" href="styles/main.css">
+</head>
+<body data-ng-app="vkApp" data-ng-controller="AppController">
+	<div class="container">
+		<!-- logo -->
+		<div class="vk-logo"></div>
+
+		<!-- navigator -->
+		<div class="vk-nav-info">
+			<div class="vk-sub-title">----热云管理端----</div>
+			
+			<!-- render when user has login -->
+			<div data-ng-if="hasLogin()">
+				<ul class="nav nav-pills pull-right vk-nav">
+					<li data-ng-class="{active: isActive('/user')}" data-ng-if="isAdmin()"><a href="/user/company/companys">用户</a></li>
+					<li data-ng-class="{active: isActive('/summary')}"><a href="/summary/project/statusSummary">项目首页</a></li>
+					<li data-ng-if="!isProject()" data-ng-class="{active: isActive('/project')}"><a href="/project/project/projects">项目</a></li>
+					<li data-ng-if="isProject()" data-ng-class="{active: isActive('/project')}"><a href="/project/project/projectInfo">项目</a></li>
+					
+					<li data-ng-class="{active: isActive('/monitor')}"><a href="/monitor/monitor/datas">监测数据</a></li>
+					<li data-ng-class="{active: isActive('/operate')}"><a href="/operate/runningdata/runningdatas">运行数据</a></li>
+					<li data-ng-class="{active: isActive('/logout')}" data-ng-click="doLogout()" data-ng-show="hasLogin()"><a href="">Quit</a></li>
+				</ul>
+				<span class="welcome-msg pull-right">Welcome, {{ getUserName() }}!</span>
+			</div>
+		</div>
+		
+		<!-- main -->
+		<!-- render when user is not login -->
+		<div data-ng-if="!hasLogin()">
+			<div class="vk-content" data-ng-view=""></div>
+		</div>
+		
+		<!-- render when user is login -->
+		<div data-ng-if="hasLogin()" class="row">
+			<!-- menu -->
+			<div class="col-md-2">
+				<div class="vk-menu">
+					<ul class="nav nav-pills nav-stacked">
+						<li data-ng-if="isActive('/user')" data-ng-class="{active: isActive('/user/company/companys')}"><a href="/user/company/companys">公司</a></li>
+						<li data-ng-if="isActive('/user')" data-ng-class="{active: isActive('/user/operator/operators')}"><a href="/user/operator/operators">操作员</a></li>
+						<li data-ng-if="isActive('/summary')" data-ng-class="{active:isActive('/summary/project/statusSummary')}"><a href="/summary/project/statusSummary">项目总览</a>
+						
+						<li data-ng-if="isActive('/project') && !isProject()" data-ng-class="{active: isActive('/project/project/projects')}"><a href="/project/project/projects">项目</a></li>
+						<li data-ng-if="isActive('/project') && isProject()" data-ng-class="{active: isActive('/project/project/projectInfo')}"><a href="/project/project/projectInfo">基本信息</a></li>
+						<li data-ng-if="isActive('/project')" data-ng-class="{active: isActive('/project/project/buildings')}"><a href="/project/project/buildings">建筑</a></li>
+						<li data-ng-if="isActive('/project')" data-ng-class="{active: isActive('/project/project/obvsites')}"><a href="/project/project/obvsites">观测点</a></li>
+						<li data-ng-if="isActive('/project')" data-ng-class="{active: isActive('/project/project/boilings')}"><a href="/project/project/boilings">锅炉</a></li>
+						<li data-ng-if="isActive('/project')" data-ng-class="{active: isActive('/project/project/boilinggroups')}"><a href="/project/project/boilinggroups">锅炉分组</a></li>
+						<li data-ng-if="isActive('/project')" data-ng-class="{active: isActive('/project/project/controllers')}"><a href="/project/project/controllers">控制器</a></li>
+						
+						<li data-ng-if="isActive('/monitor')" data-ng-class="{active: isActive('/monitor/weather/metaweathers')}"><a href="/monitor/weather/metaweathers">项目综合天气数据</a></li>
+						<li data-ng-if="isActive('/monitor')" data-ng-class="{active: isActive('/monitor/weather/detailweathers')}"><a href="/monitor/weather/detailweathers">分时天气数据</a></li>
+						<li data-ng-if="isActive('/monitor')" data-ng-class="{active: isActive('/monitor/monitor/datas')}"><a href="/monitor/monitor/datas">室内监测数据温度</a></li>
+						<li data-ng-if="isActive('/monitor')" data-ng-class="{active: isActive('/monitor/wmonitor/datas')}"><a href="/monitor/wmonitor/datas">室外监测数据温度</a></li>
+						
+						
+						<li data-ng-if="isActive('/operate')" data-ng-class="{active: isActive('/operate/operate/operations')}"><a href="/operate/operate/operations">执行日志</a></li>
+						<li data-ng-if="isActive('/operate')" data-ng-class="{active: isActive('/operate/runningdata/runningdatas')}"><a href="/operate/runningdata/runningdatas">运行状态</a></li>
+						<li data-ng-if="isActive('/operate')" data-ng-class="{active: isActive('/operate/daydata/datas')}"><a href="/operate/daydata/datas">日汇总</a></li>
+						<li data-ng-if="isActive('/operate')" data-ng-class="{active: isActive('/operate/weekdata/datas')}"><a href="/operate/weekdata/datas">周汇总</a></li>
+						<li data-ng-if="isActive('/operate')" data-ng-class="{active: isActive('/operate/monthdata/datas')}"><a href="/operate/monthdata/datas">月汇总</a></li>
+						<li data-ng-if="isActive('/operate')" data-ng-class="{active: isActive('/operate/sessiondata/datas')}"><a href="/operate/sessiondata/datas">季汇总</a></li>
+						<li data-ng-if="isActive('/operate')" data-ng-class="{active: isActive('/operate/predict/predicts')}"><a href="/operate/predict/predicts">预测数据</a></li>
+								
+					</ul>
+				</div>
+			</div>
+			
+			<!-- content -->
+			<div class="col-md-10">
+				<div class="vk-content" data-ng-view=""></div>
+			</div>
+		</div>
+		
+		<!-- footer -->
+		<div class="footer">Copyright ©2017-2018 北京海江能源科技责任有限公司</div>
+	</div>
+
+	<!-- libraries -->
+	<script src="libraries/jquery/jquery.min.js"></script>
+	<script src="libraries/angular/angular.min.js"></script>
+	<script src="libraries/angular/angular-resource.min.js"></script>
+	<script src="libraries/angular/angular-sanitize.min.js"></script>
+	<script src="libraries/angular/angular-route.min.js"></script>
+	<script src="libraries/angular/angular-cookies.min.js"></script>
+	<script src="libraries/angular/angular-animate.min.js"></script>
+	<script src="libraries/angular/i18n/angular-locale_zh-cn.js"></script>
+	<script src="libraries/bootstrap/bootstrap.min.js"></script>
+	<script src="libraries/angular-strap/angular-strap.min.js"></script>
+	<script src="libraries/angular-strap/angular-strap.tpl.min.js"></script>
+	<script src="libraries/angular-ui/ng-grid/ng-grid.min.js"></script>
+	<script src="libraries/angular-ui/ng-grid/plugins/ng-grid-flexible-height.js"></script>
+	<script src="libraries/q/q.js"></script>
+	<script src="libraries/moment/moment.min.js"></script>
+	<script src="libraries/underscore/underscore.js"></script>
+	<script src="libraries/angular-md5/angular-md5.min.js"></script>
+	<script src="libraries/angular-base64/angular-base64.min.js"></script>
+	<script src="libraries/jquery/jquery-ui.min.js"></script>
+    <script src="libraries/ui-calendar/src/calendar.js"></script>
+    <script src="libraries/fullcalendar/fullcalendar.js"></script>
+    <script src="libraries/fullcalendar/gcal.js"></script>
+    
+	<!-- application -->
+	<script src="scripts/app.js"></script>
+	<!-- controllers -->
+	<script src="scripts/controllers/loginController.js"></script>
+	<script src="scripts/controllers/appController.js"></script>
+	<script src="scripts/controllers/ProjectController.js"></script>
+	<script src="scripts/controllers/boilingController.js"></script>
+	<script src="scripts/controllers/BuildingController.js"></script>
+	<script src="scripts/controllers/ObvsiteController.js"></script>
+	<script src="scripts/controllers/Paramsontroller.js"></script>
+	<script src="scripts/controllers/MonitordatasController.js"></script>
+	<script src="scripts/controllers/WMonitordatasController.js"></script>
+	<script src="scripts/controllers/OperationsController.js"></script>
+	<script src="scripts/controllers/CompanyController.js"></script>
+	<script src="scripts/controllers/OperatorController.js"></script>
+	<script src="scripts/controllers/ProjectInfoController.js"></script>
+	<script src="scripts/controllers/boilingController.js"></script>
+	<script src="scripts/controllers/dispatchCtrController.js"></script>
+	<script src="scripts/controllers/runningdataController.js"></script>
+	<script src="scripts/controllers/dayDatasController.js"></script>
+	<script src="scripts/controllers/weekDatasController.js"></script>
+	<script src="scripts/controllers/monthDatasController.js"></script>
+	<script src="scripts/controllers/sessionDatasController.js"></script>
+	<script src="scripts/controllers/statusSummary.js"></script>
+	<script src="scripts/controllers/metaWeathersController.js"></script>
+	<script src="scripts/controllers/detailWeathersController.js"></script>
+	<script src="scripts/controllers/predictDataController.js"></script>
+	<script src="scripts/controllers/BoilingGroupController.js"></script>
+	
+	
+	<!-- services -->
+	<script src="scripts/services/services.js"></script>
+	<!-- directives -->
+	<script src="scripts/directives/directives.js"></script>
+	<script src="scripts/directives/boilingTableDirective.js"></script>
+	<!-- filters -->
+	<script src="scripts/filters/filters.js"></script>
+</body>
+</html>

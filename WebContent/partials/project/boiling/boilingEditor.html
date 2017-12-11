@@ -1,0 +1,65 @@
+<div class="modal" tabindex="-1" data-role="dialog" data-ng-controller="BoilingEditorController">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-ng-click="$hide()">&times;</button>
+				<h4 class="modal-title">
+					<strong>Building</strong>
+				</h4>
+			</div>
+			<div class="modal-body">
+				<form data-role="form" name="form">
+					<div class="form-group" data-ng-show="error != null">
+						<div class="alert alert-danger">{{error}}</div>
+					</div>
+					
+					<div class="form-group" data-ng-class="{'has-error' : form.boiling.NO.$error.required && submitted}">
+						<label for="name">锅炉编号 *</label> 
+						<input type="text" name="NO" class="form-control" id="NO" data-ng-model="boiling.NO" placeholder="boiling.NO" required>
+						<p class="help-block" data-ng-show="form.NO.$error.required && submitted">Required</p>
+					</div>
+					<div class="form-group" data-ng-class="{'has-error' : form.brand.$error.required && submitted}">
+						<label for="name">品牌 *</label> 
+						<input type="text" name="brand" class="form-control" id="boiling.brand" data-ng-model="boiling.brand" placeholder="boiling.brand" required>
+						<p class="help-block" data-ng-show="form.brand.$error.required && submitted">Required</p>
+					</div>
+					<div class="form-group" data-ng-class="{'has-error' : form.type.$error.required && submitted}">
+						<label for="name">类型 *</label> 
+						<input type="text" name="type" class="form-control" id="boiling.type" data-ng-model="boiling.type" placeholder="boiling.brand" >
+						<p class="help-block" data-ng-show="form.brand.$error.required && submitted">Required</p>
+					</div>
+					<div class="form-group" data-ng-class="{'has-error' : form.brand.$error.required && submitted}">
+						<label for="name">SN </label> 
+						<input type="text" name="SN" class="form-control" id="SN" data-ng-model="boiling.SN" placeholder="boiling.SN" >
+						<p class="help-block" data-ng-show="form.brand.$error.required && submitted">Required</p>
+					</div>
+					<div class="form-group" data-ng-class="{'has-error' : form.brand.$error.required && submitted}">
+						<label for="name">锅炉容量 </label> 
+						<input type="text" name="capacity" class="form-control" id="capacity" data-ng-model="boiling.capacity" placeholder="boiling.capacity" >
+						<p class="help-block" data-ng-show="form.capacity.$error.required && submitted">Required</p>
+					</div>
+					<div class="form-group" data-ng-class="{'has-error' : form.brand.$error.required && submitted}">
+						<label for="name">锅炉标定能耗-高火（/小时） </label> 
+						<input type="text" name="energy_consumption" class="form-control" id="energy_consumption_high" data-ng-model="boiling.energy_consumption_high" placeholder="boiling.energy_consumption_high" >
+						<p class="help-block" data-ng-show="form.capacity.$error.required && submitted">Required</p>
+					</div>
+					<div class="form-group" data-ng-class="{'has-error' : form.brand.$error.required && submitted}">
+						<label for="name">锅炉标定能耗-低火（/小时） </label> 
+						<input type="text" name="energy_consumption-low" class="form-control" id="energy_consumption_low" data-ng-model="boiling.energy_consumption_low" placeholder="boiling.energy_consumption_low" >
+						<p class="help-block" data-ng-show="form.capacity.$error.required && submitted">Required</p>
+					</div>
+					
+					<div class="form-group" data-ng-class="{'has-error' : form.brand.$error.required && submitted}">
+						<label for="name">锅炉标定负载（%） </label> 
+						<input type="text" name="load_setting" class="form-control" id="load_setting" data-ng-model="boiling.load_setting" placeholder="boiling.load_setting" >
+						<p class="help-block" data-ng-show="form.capacity.$error.required && submitted">Required</p>
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="submit" class="btn btn-primary" data-ng-click="doSave()">Save</button>
+				<button type="button" class="btn btn-info" data-ng-click="$hide()">Cancel</button>
+			</div>
+		</div>
+	</div>
+</div>
